@@ -1,5 +1,6 @@
-html
-  head
-    title= title
-  body
-    h1= message
+extends ../../layout/index.pug
+include ../../mixins/box-head.pug
+block main
+  +box-head("Trang chủ")
+  - var url = 'http://localhost:3000/product'
+  a(href = url) Product

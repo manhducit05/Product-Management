@@ -1,5 +1,5 @@
 const index = (req, res) => {
-  res.render('client/pages/products/index.pug', { title: 'Product Page', message: 'Products' })
+  res.render('client/pages/products/index.pug', { titlePage: 'Product Page', message: 'Products' })
 }
 module.exports = {
   index
