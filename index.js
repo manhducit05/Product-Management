@@ -3,8 +3,11 @@ const app = express()
 //env variable
 require('dotenv').config()
 const PORT = process.env.PORT
-
+//define static files
 app.use(express.static('public'))
+//connect to db
+const db = require('./config/db')
+db.connect()
 
 const route = require('./routes/client/index.route')
 app.set('views', './views') // specify the views directory

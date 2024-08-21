@@ -2,3 +2,14 @@ extends ../../layout/index.pug
 include ../../mixins/box-head.pug
 block main
   +box-head("Danh sách sản phẩm")
+  .row 
+    each item in products 
+      .col-4.mb-3
+        .product-item
+          .inner-img
+            img(src=item.thumbnail, alt='img')
+          .inner-content
+            .inner-title #{item.title}
+            .inner-priceNew #{item.price}
+            .inner-priceOld #{(item.price-item.price*item.discountPercentage*0.01).toFixed(0)}
+            .inner-discount -#{item.discountPercentage}%
