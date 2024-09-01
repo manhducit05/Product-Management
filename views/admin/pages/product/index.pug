@@ -1,10 +1,17 @@
 extends ../../layout/index.pug
 block main
   .card
-    ul.list-group.list-group-flush
-      each item in statusFilterBtn
-        li.list-group-item
-          button(class= `${item.class}` btn-status=`${item.status}`) #{item.text}
+    .row
+      .col-6
+        ul.list-group.list-group-flush
+          each item in statusFilterBtn
+            li.list-group-item
+              button(class= `${item.class}` btn-status=`${item.status}`) #{item.text}
+      .col-6.mt-4
+        form.input-group-prepend#searchForm
+          input.form-control.rounded#searchTxt(place-holder='search' placeholder="Search..." aria-label="Search" aria-describedby="search-addon" value=searchKey)
+          button.btn.btn-outline-secondary#searchBtn(type='submit') Search
+
   .card 
     .card-body   
       .card-title Danh sách sản phẩm 
@@ -20,7 +27,7 @@ block main
             tbody 
             each item , index in products 
               tr 
-                td #{index}
+                td #{index+1}
                 td 
                   img(src= `${item.thumbnail}`
                   alt = `Sản phẩm ${index}`

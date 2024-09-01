@@ -18,16 +18,26 @@ const index = async (req, res) => {
       text: "Dừng hoạt động"
     }
   ]
-  const findKey = {
-    deleted: false
+  const find = {
+    deleted: false,
   }
   if(req.query.status)
-    findKey.status = req.query.status
-  const products = await Product.find(findKey)
+    find.status = req.query.status
+  if(req.query.title){
+    var searchKey = req.query.title
+    const regex = new RegExp(searchKey,"i") //tạo chuỗi regex
+    find.tittle = regex
+  }
+
+  console.log(find)
+  const products = await Product.find(find)
   // console.log(products)
   
-  res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products, statusFilterBtn: statusFilterBtn})
+  res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products, statusFilterBtn: statusFilterBtn, searchKey: searchKey})
 }
+
+
+
 module.exports = {
   index
 }
