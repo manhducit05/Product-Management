@@ -27,3 +27,21 @@ searchForm.addEventListener('submit',(e)=>{
   console.log(url);
   window.location.href = url.href;
 })
+//paging
+const pageBtn = document.querySelectorAll("#pageBtn")
+
+pageBtn.forEach((item)=>{
+  item.addEventListener("click",(e)=>{
+    e.preventDefault()
+    const page = parseInt(item.innerHTML)
+    if(page){
+      url.searchParams.set("page", page)
+    }
+    else{
+      url.searchParams.delete("page")
+    }
+    console.log(url);
+    window.location.href = url.href;
+  })
+})
+
