@@ -32,15 +32,31 @@ const index = async (req, res) => {
     find.tittle = regex
   }
 
-  //paging
+//paging
   const count =  (await Product.find(find)).length
   const page = paging(count, req)
 
   const products = await Product.find(find).limit(page.limit).skip((page.currentPage - 1)*page.limit)
-  // console.log(count)
+
+
   res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products, statusFilterBtn: statusFilterBtn, searchKey: searchKey, count:page.numOfPages})
 }
 
+const changeStatus = async (req, res)=>{
+//change status
+if(req.params.status){
+  const status = req.params.status
+  const id = req.params.id
+  console.log(status, id)
+
+  await Product.updateOne({ _id: id }, { status: status });
+  res.redirect('back')
+
+}
+}
+
+
 module.exports = {
-  index
+  index,
+  changeStatus
 }

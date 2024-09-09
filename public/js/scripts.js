@@ -44,4 +44,22 @@ pageBtn.forEach((item)=>{
     window.location.href = url.href;
   })
 })
-
+//change status
+const statusBtn = document.querySelectorAll('[button-change-status]')
+const statusForm = document.querySelector('#form-change-status')
+if(statusBtn.length>0){
+  statusBtn.forEach((button)=>{
+    button.addEventListener('click',()=>{
+      const status = button.getAttribute('data-status') 
+      const id = button.getAttribute('data-id')
+      console.log(status, id)
+      if(status=='active'){
+        statusForm.action = statusForm.getAttribute('raw-path')+`/inactive/${id}`
+      }
+      else{
+        statusForm.action = statusForm.getAttribute('raw-path')+`/active/${id}`
+      }
+      statusForm.submit()
+    })
+  })
+}
