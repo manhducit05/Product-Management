@@ -63,3 +63,22 @@ if(statusBtn.length>0){
     })
   })
 }
+//delete item
+const deleteBtn1 = document.querySelectorAll('[button-delete-item-step1]')
+const deleteForm = document.querySelector('#form-delete-item')
+if(deleteBtn1.length>0){
+  deleteBtn1.forEach(button => {
+     button.addEventListener('click',()=>{
+      const id = button.getAttribute('data-id')
+      console.log(id)
+      deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}`
+      console.log(deleteForm.action)
+     })
+  });
+}
+const deleteBtn2 = document.querySelector('[button-delete-item-step2]');
+if (deleteBtn2) {
+  deleteBtn2.addEventListener('click', () => {
+    deleteForm.submit();
+  });
+}

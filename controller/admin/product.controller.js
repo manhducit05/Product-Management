@@ -51,12 +51,18 @@ if(req.params.status){
 
   await Product.updateOne({ _id: id }, { status: status });
   res.redirect('back')
-
 }
+}
+const deleteItem = async(req, res)=>{
+  const id = req.params.id
+  await Product.deleteOne({_id: id});
+  res.redirect('back')
+
 }
 
 
 module.exports = {
   index,
-  changeStatus
+  changeStatus,
+  deleteItem
 }

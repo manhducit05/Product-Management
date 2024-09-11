@@ -42,17 +42,38 @@ block main
                   else
                     a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-danger') Dừng hoạt động
                 td  
-                  button(class='btn btn-warning btn-sm') Sửa
-                  button(class='btn btn-danger btn-sm ml-1') Xoá
+                  button(class='btn btn-warning btn-sm' data-id = item.id button-edit-item) Sửa
+                  button(class='btn btn-danger btn-sm ml-1' data-toggle="modal" data-target="#staticBackdrop" data-id = item.id  button-delete-item-step1) Xoá
+                  .modal.fade#staticBackdrop(data-backdrop="static", data-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true")
+                    .modal-dialog.modal-dialog-centered
+                      .modal-content
+                        .modal-header
+                          h5.modal-title#staticBackdropLabel Modal title
+                          button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                        .modal-body
+                          p Xác nhận xoá sản phẩm
+                        .modal-footer
+                          button.btn.btn-secondary(type="button", data-dismiss="modal") Thoát
+                          button.btn.btn-danger(type="button" button-delete-item-step2) Xoá
+
   nav(aria-label="Page navigation example")
   ul.pagination
     -for(var i = 1; i <= count; i++)
       li.page-item  
         div.page-link#pageBtn #{i}
+
+
   form(
     action=''
     method="GET",
     id='form-change-status',
     raw-path='/admin/product/changeStatus'
+  )   
+  form(
+    action=''
+    method="GET",
+    id='form-delete-item',
+    raw-path='/admin/product/delete'
   ) 
     
