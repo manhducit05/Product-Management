@@ -54,10 +54,10 @@ if(statusBtn.length>0){
       const id = button.getAttribute('data-id')
       console.log(status, id)
       if(status=='active'){
-        statusForm.action = statusForm.getAttribute('raw-path')+`/inactive/${id}`
+        statusForm.action = statusForm.getAttribute('raw-path')+`/inactive/${id}?_method=PATCH`
       }
       else{
-        statusForm.action = statusForm.getAttribute('raw-path')+`/active/${id}`
+        statusForm.action = statusForm.getAttribute('raw-path')+`/active/${id}?_method=PATCH`
       }
       statusForm.submit()
     })
@@ -71,7 +71,7 @@ if(deleteBtn1.length>0){
      button.addEventListener('click',()=>{
       const id = button.getAttribute('data-id')
       console.log(id)
-      deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}`
+      deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}?_method=DELETE`
       console.log(deleteForm.action)
      })
   });
