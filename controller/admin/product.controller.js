@@ -57,7 +57,10 @@ if(req.params.status){
 const deleteItem = async(req, res)=>{
   req.flash('delete', 'Xoá sản phẩm thành công!')
   const id = req.params.id
-  await Product.deleteOne({_id: id}, { deleted: 'true' })
+  await Product.deleteOne({_id: id}, { 
+    deleted: 'true',
+    deleteAt: new Date()
+   })
   res.redirect('back')
 }
 
