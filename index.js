@@ -1,6 +1,9 @@
 const express = require('express')
 const  methodOverride = require('method-override')
 const app = express()
+const  flash = require('express-flash')
+const expressSession = require('express-session')
+const cookieParser = require('cookie-parser')
 
 // app local varaiable - biến tổng quan, dùng dc trong tất cả file pug
 const systemConfix = require('./config/system')
@@ -20,6 +23,13 @@ db.connect()
 
 //method override
 app.use(methodOverride('_method'))
+
+
+//flash
+
+app.use(cookieParser('keyboard cat'));
+app.use(expressSession({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 
 const route = require('./routes/client/index.route')
 const routeAdmin = require('./routes/admin/index.route')

@@ -82,3 +82,10 @@ if (deleteBtn2) {
     deleteForm.submit();
   });
 }
+//flash: show alert
+const alert = document.querySelector('[show-alert]');
+const time = parseInt(alert.getAttribute('data-time'));
+
+setTimeout(() => {
+  alert.classList.add('hidden');
+}, time);

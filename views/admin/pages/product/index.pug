@@ -1,5 +1,10 @@
 extends ../../layout/index.pug
 block main
+  - if (messages.success)
+    .message.success
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.success}
   .card
     .row
       .col-6

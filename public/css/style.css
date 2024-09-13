@@ -23,3 +23,6 @@
 .pagination{
   margin-left: 500px;
 }
+.hidden{
+  display: none;
+}

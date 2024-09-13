@@ -45,6 +45,7 @@ const index = async (req, res) => {
 const changeStatus = async (req, res)=>{
 //change status
 if(req.params.status){
+  req.flash('success', 'Cập nhật trạng thái thành công!');
   const status = req.params.status
   const id = req.params.id
   console.log(status, id)

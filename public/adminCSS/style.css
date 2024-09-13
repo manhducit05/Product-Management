@@ -39,3 +39,6 @@
   padding: 6px 10px;
   border-bottom: 1px solid #51515151;
 }
+.hidden{
+  display: none;
+}
