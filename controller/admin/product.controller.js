@@ -57,7 +57,7 @@ if(req.params.status){
 const deleteItem = async(req, res)=>{
   req.flash('delete', 'Xoá sản phẩm thành công!')
   const id = req.params.id
-  await Product.deleteOne({_id: id}, { 
+  await Product.updateOne({_id: id}, { 
     deleted: 'true',
     deleteAt: new Date()
    })
