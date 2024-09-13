@@ -1,10 +1,16 @@
 extends ../../layout/index.pug
 block main
-  - if (messages.success)
-    .message.success
+  - if (messages.update)
+    .message.update
       .alert.alert-success(
     show-alert
-    data-time = "5000") #{messages.success}
+    data-time = "5000") #{messages.update}
+
+  - if (messages.delete)
+    .message.delete
+      .alert.alert-danger(
+    show-alert
+    data-time = "5000") #{messages.delete}
   .card
     .row
       .col-6
