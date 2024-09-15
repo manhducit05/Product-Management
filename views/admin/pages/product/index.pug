@@ -11,6 +11,7 @@ block main
       .alert.alert-danger(
     show-alert
     data-time = "5000") #{messages.delete}
+
   .card
     .row
       .col-6
@@ -22,13 +23,34 @@ block main
         form.input-group-prepend#searchForm
           input.form-control.rounded#searchTxt(place-holder='search' placeholder="Search..." aria-label="Search" aria-describedby="search-addon" value=searchKey)
           button.btn.btn-outline-secondary#searchBtn(type='submit') Search
-
   .card 
     .card-body   
+      form(
+        action ='/admin/product/multi-change?_method=PATCH',
+        method = 'POST'
+      )
+        .row
+          .col-4
+            .form-group
+              select(class="form-control" id="type")
+                option Hoạt động
+                option Dừng hoạt động 
+          .col-4
+            .form-group
+              input(
+                type='text',
+                name='ids',
+                value='',
+                class='form-control'
+              )
+          .col-4
+            button(type='submit' class='btn btn-primary') Áp dụng
       .card-title Danh sách sản phẩm 
         table.table.table-hover.table-sm 
           thead
             tr 
+              th 
+                input(type="checkbox" id="checkAll" name="checkAll")
               th STT
               th Hình ảnh
               th Tiêu đề
@@ -38,6 +60,9 @@ block main
             tbody 
             each item , index in products 
               tr 
+                td 
+                  input(type="checkbox" id="checkOne" name="checkOne" data-id = item.id)
+
                 td #{index+1}
                 td 
                   img(src= `${item.thumbnail}`

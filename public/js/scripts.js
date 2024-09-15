@@ -71,7 +71,7 @@ if(deleteBtn1.length>0){
      button.addEventListener('click',()=>{
       const id = button.getAttribute('data-id')
       console.log(id)
-      deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}?_method=DELETE`
+      deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}?_method=PATCH`
       console.log(deleteForm.action)
      })
   });
@@ -84,8 +84,47 @@ if (deleteBtn2) {
 }
 //flash: show alert
 const alert = document.querySelector('[show-alert]');
-const time = parseInt(alert.getAttribute('data-time'));
+if(alert){
+  const time = parseInt(alert.getAttribute('data-time'));
 
-setTimeout(() => {
-  alert.classList.add('hidden');
-}, time);
+  setTimeout(() => {
+    alert.classList.add('hidden');
+  }, time);
+}
+
+//multi change
+const selectAll = document.querySelector('#checkAll'); // Checkbox 'Chọn tất cả'
+const selectOne = document.querySelectorAll('input[name="checkOne"]'); // Tất cả các checkbox con
+
+let ids = [];
+
+// Hàm cập nhật mảng ids
+const updateIdsArray = (checkbox) => {
+  const id = checkbox.getAttribute('data-id'); // Lấy thuộc tính 'data-id' của checkbox
+  if (checkbox.checked) {
+    if (!ids.includes(id)) {
+      ids.push(id); // Thêm id vào mảng nếu chưa có
+    }
+  } else {
+    const index = ids.indexOf(id);
+    if (index > -1) {
+      ids.splice(index, 1); // Xóa id khỏi mảng nếu tồn tại
+    }
+  }
+  console.log(ids); // In ra mảng ids để kiểm tra
+};
+
+// Sự kiện 'change' cho checkbox 'Chọn tất cả'
+selectAll.addEventListener('change', () => {
+  selectOne.forEach(checkbox => {
+    checkbox.checked = selectAll.checked; // Đánh dấu hoặc bỏ đánh dấu tất cả checkbox con
+    updateIdsArray(checkbox); // Cập nhật mảng ids khi 'Chọn tất cả'
+  });
+});
+
+// Sự kiện 'change' cho từng checkbox con
+selectOne.forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    updateIdsArray(this); // Cập nhật mảng ids khi từng checkbox con thay đổi
+  });
+});

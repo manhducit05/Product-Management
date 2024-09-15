@@ -63,10 +63,13 @@ const deleteItem = async(req, res)=>{
    })
   res.redirect('back')
 }
-
+const changeMulti = async(req, res)=>{
+  res.send("Hello change multi")
+}
 
 module.exports = {
   index,
   changeStatus,
-  deleteItem
+  deleteItem,
+  changeMulti
 }
