@@ -32,12 +32,13 @@ block main
         .row
           .col-4
             .form-group
-              select(class="form-control" id="type")
-                option Hoạt động
-                option Dừng hoạt động 
+              select(class="form-control" id="type" name='type')
+                option(value='active') Hoạt động
+                option(value='inactive') Dừng hoạt động 
           .col-4
             .form-group
               input(
+                id = 'txtIds'
                 type='text',
                 name='ids',
                 value='',
@@ -96,8 +97,12 @@ block main
   nav(aria-label="Page navigation example")
   ul.pagination
     -for(var i = 1; i <= count; i++)
-      li.page-item  
-        div.page-link#pageBtn #{i}
+      -if(i==currentPage)
+        li.page-item.active
+          div.page-link#pageBtn #{i}
+      - else
+        li.page-item
+          div.page-link#pageBtn #{i}
 
 
   form(

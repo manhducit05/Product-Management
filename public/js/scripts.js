@@ -44,6 +44,7 @@ pageBtn.forEach((item)=>{
     window.location.href = url.href;
   })
 })
+
 //change status
 const statusBtn = document.querySelectorAll('[button-change-status]')
 const statusForm = document.querySelector('#form-change-status')
@@ -93,9 +94,9 @@ if(alert){
 }
 
 //multi change
-const selectAll = document.querySelector('#checkAll'); // Checkbox 'Chọn tất cả'
-const selectOne = document.querySelectorAll('input[name="checkOne"]'); // Tất cả các checkbox con
-
+const selectAll = document.querySelector('#checkAll') // Checkbox 'Chọn tất cả'
+const selectOne = document.querySelectorAll('input[name="checkOne"]') // Tất cả các checkbox con
+const txtIds = document.querySelector('#txtIds')
 let ids = [];
 
 // Hàm cập nhật mảng ids
@@ -111,6 +112,7 @@ const updateIdsArray = (checkbox) => {
       ids.splice(index, 1); // Xóa id khỏi mảng nếu tồn tại
     }
   }
+  txtIds.value = ids
   console.log(ids); // In ra mảng ids để kiểm tra
 };
 
@@ -128,3 +130,4 @@ selectOne.forEach(checkbox => {
     updateIdsArray(this); // Cập nhật mảng ids khi từng checkbox con thay đổi
   });
 });
+

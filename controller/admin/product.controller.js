@@ -39,7 +39,7 @@ const index = async (req, res) => {
   const products = await Product.find(find).limit(page.limit).skip((page.currentPage - 1)*page.limit)
 
 
-  res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products, statusFilterBtn: statusFilterBtn, searchKey: searchKey, count:page.numOfPages})
+  res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products, statusFilterBtn: statusFilterBtn, searchKey: searchKey, count:page.numOfPages, currentPage: page.currentPage})
 }
 
 const changeStatus = async (req, res)=>{
@@ -63,9 +63,23 @@ const deleteItem = async(req, res)=>{
    })
   res.redirect('back')
 }
-const changeMulti = async(req, res)=>{
-  res.send("Hello change multi")
-}
+const changeMulti = async (req, res) => {
+  req.flash('update', 'Cập nhật trạng thái thành công!');
+  try {
+    console.log(req.body);
+    const idsArray = req.body.ids.split(','); // Assuming ids are sent as a comma-separated string
+    // Perform the update
+    const result = await Product.updateMany(
+      { _id: { $in: idsArray } },
+      { status: req.body.type }
+    )
+    }    
+    catch (error) {
+      // Handle any errors
+      console.error(error);}
+   res.redirect('back')
+    
+    } 
 
 module.exports = {
   index,
