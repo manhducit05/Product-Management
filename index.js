@@ -13,7 +13,6 @@ app.locals.prefixAdmin = systemConfix.prefixAdmin
 require('dotenv').config()
 const PORT = process.env.PORT
 
-
 //define static files
 app.use(express.static('public'))
 

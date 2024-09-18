@@ -1,0 +1,36 @@
+extends ../../layout/index.pug
+block main
+  .card 
+    .card-body  
+      .card-title THÊM MỚI SẢN PHẨM
+      form(
+        action=``
+        id='createUserForm'
+        method= 'POST'
+        )
+        div(class="form-group")
+          label(for='title') Tiêu đề
+          input(type='text', id='title', class="form-control", name='tittle')
+        div(class="form-group")
+          label(for='desc') Mô tả
+          input(type='text', id='desc', class="form-control", name = 'description')
+        div(class="form-group")
+          label(for='price') Giá
+          input(type='text', id='price', class="form-control", name='price')
+        div(class="form-group")
+          label(for='discount') Giảm giá
+          input(type='text', id='title', class="form-control", name='discountPercentage')
+        div(class="form-group") 
+          label(for='stock') Số lượng
+          input(type='text', id='stock', class="form-control", name='stock')
+        div(class="form-group") 
+          label(for='thumbnail') Ảnh
+          input(type='text', id='thumbnail', class="form-control", name='thumbnail')
+        div(class="form-group")
+          input(class="form-check-input" type="radio" name="status" id="active" value="active")
+          label(class="form-check-label mr-5" for="active") Hoạt động
+          input(class="form-check-input" type="radio" name="status" id="inactive" value="inactive")
+          label(class="form-check-label" for="inactive") Dừng hoạt động
+        div(class="form-group") 
+          button(class='btn btn-outline-success mt-3' type='submit') Tạo sản phẩm
+

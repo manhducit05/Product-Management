@@ -63,6 +63,7 @@ const deleteItem = async(req, res)=>{
    })
   res.redirect('back')
 }
+//multi-change
 const changeMulti = async (req, res) => {
   req.flash('update', 'Cập nhật trạng thái thành công!');
   try {
@@ -79,11 +80,21 @@ const changeMulti = async (req, res) => {
       console.error(error);}
    res.redirect('back')
     
-    } 
-
+} 
+//create user
+const createProduct = async(req,res)=>{
+  res.render('admin/pages/product/create.pug')
+}
+const postAfterCreate = async(req,res)=>{
+  console.log(req.body)
+  res.redirect('back')
+ 
+}
 module.exports = {
   index,
   changeStatus,
   deleteItem,
-  changeMulti
+  changeMulti,
+  createProduct,
+  postAfterCreate
 }
