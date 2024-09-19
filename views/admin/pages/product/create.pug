@@ -10,26 +10,26 @@ block main
         )
         div(class="form-group")
           label(for='title') Tiêu đề
-          input(type='text', id='title', class="form-control", name='tittle')
+          input(type='text', id='title', class="form-control", name='tittle', required)
         div(class="form-group")
           label(for='desc') Mô tả
-          input(type='text', id='desc', class="form-control", name = 'description')
+          input(type='text', id='desc', class="form-control", name = 'description' required)
         div(class="form-group")
           label(for='price') Giá
           input(type='text', id='price', class="form-control", name='price')
         div(class="form-group")
           label(for='discount') Giảm giá
-          input(type='text', id='title', class="form-control", name='discountPercentage')
+          input(type='text', id='title', class="form-control", name='discountPercentage' required)
         div(class="form-group") 
           label(for='stock') Số lượng
-          input(type='text', id='stock', class="form-control", name='stock')
+          input(type='text', id='stock', class="form-control", name='stock' required)
         div(class="form-group") 
           label(for='thumbnail') Ảnh
-          input(type='text', id='thumbnail', class="form-control", name='thumbnail')
+          input(type='text', id='thumbnail', class="form-control", name='thumbnail' required)
         div(class="form-group")
-          input(class="form-check-input" type="radio" name="status" id="active" value="active")
+          input(class="form-check-input" type="radio" name="status" id="active" value="active" required)
           label(class="form-check-label mr-5" for="active") Hoạt động
-          input(class="form-check-input" type="radio" name="status" id="inactive" value="inactive")
+          input(class="form-check-input" type="radio" name="status" id="inactive" value="inactive" required)
           label(class="form-check-label" for="inactive") Dừng hoạt động
         div(class="form-group") 
           button(class='btn btn-outline-success mt-3' type='submit') Tạo sản phẩm

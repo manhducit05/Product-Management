@@ -86,8 +86,17 @@ const createProduct = async(req,res)=>{
   res.render('admin/pages/product/create.pug')
 }
 const postAfterCreate = async(req,res)=>{
+  const count =  (await Product.find({deleted:false})).length
+
   console.log(req.body)
-  res.redirect('back')
+  req.body.price = parseInt(req.body.price)
+  req.body.discountPercentage = parseInt(req.body.discountPercentage)
+  req.body.stock = parseInt(req.body.stock)
+  req.body.position = count+1
+  req.body.createdAt = new Date()
+  const product = new Product(req.body)
+  await product.save();
+  res.redirect('/admin/product')  
  
 }
 module.exports = {
