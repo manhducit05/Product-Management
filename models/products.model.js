@@ -1,7 +1,8 @@
 const { default: mongoose } = require("mongoose");
-
+var slug = require('mongoose-slug-updater');
+mongoose.plugin(slug);
 const productSchema = new mongoose.Schema({
-  tittle: String,
+  tittle: String, //san pham 1
   description: String,
   price: Number,
   discountPercentage: Number,
@@ -9,6 +10,7 @@ const productSchema = new mongoose.Schema({
   thumbnail: String,
   status: String,
   position: Number,
+  slug: { type: String, slug: "tittle", unique: true }, // san-pham-1
   deleted: {
     type: Boolean,
     default: false

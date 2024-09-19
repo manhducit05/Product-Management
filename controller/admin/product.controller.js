@@ -1,6 +1,5 @@
 const { paging } = require("../../helper/paging")
 const Product = require("../../models/products.model")
-
 const index = async (req, res) => {
   const statusFilterBtn = [
     {
@@ -88,12 +87,17 @@ const createProduct = async(req,res)=>{
 const postAfterCreate = async(req,res)=>{
   const count =  (await Product.find({deleted:false})).length
 
-  console.log(req.body)
+
+  req.body.thumbnail = `/uploads/${req.file.filename}`
+
   req.body.price = parseInt(req.body.price)
   req.body.discountPercentage = parseInt(req.body.discountPercentage)
   req.body.stock = parseInt(req.body.stock)
   req.body.position = count+1
   req.body.createdAt = new Date()
+
+  console.log(req.body)
+
   const product = new Product(req.body)
   await product.save();
   res.redirect('/admin/product')  
