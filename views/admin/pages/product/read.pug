@@ -1,0 +1,28 @@
+extends ../../layout/index.pug
+block main
+  .card.border-primary.ml-5(style="width: 30rem")
+    img.card-img-top(src=`${product.thumbnail}` alt="...")
+    .card-body
+      h5.card-title.text-primary #{product.tittle}
+      table.table.table-bordered
+        tr 
+          td Giới thiệu 
+          td #{product.description}
+        tr 
+          td Giá
+          td #{product.price}
+        tr 
+          td Giảm giá
+          td #{product.discountPercentage}
+        tr 
+          td Số lượng
+          td #{product.stock}
+        tr 
+          td Trạng thái
+          - if(product.status   =="active")
+              td 
+                .badge.badge-success Hoạt động
+          -else 
+            td 
+              .badge.badge-warning Dừng hoạt động
+

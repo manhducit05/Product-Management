@@ -103,11 +103,22 @@ const postAfterCreate = async(req,res)=>{
   res.redirect('/admin/product')  
  
 }
+const viewProduct = async(req, res)=>{
+  const id = req.params.id
+  const find = {
+    _id: id,
+    deleted: false
+  }
+  const product = await Product.findOne(find)
+  console.log(product)
+  res.render('admin/pages/product/read.pug',{ product: product})
+}
 module.exports = {
   index,
   changeStatus,
   deleteItem,
   changeMulti,
   createProduct,
-  postAfterCreate
+  postAfterCreate,
+  viewProduct
 }
