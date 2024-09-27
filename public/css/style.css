@@ -26,3 +26,13 @@
 .hidden{
   display: none;
 }
+.item-img{
+  width: 300px;
+  height: 200px;
+}
+.align-center{
+  text-align: center;
+}
+.inner-priceOld{
+  text-decoration: line-through;
+}

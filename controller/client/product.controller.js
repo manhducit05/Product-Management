@@ -4,9 +4,20 @@ const index = async (req, res) => {
     status: "active",
     deleted: false
   })
-  // console.log(products)
-  res.render('admin/pages/product/index.pug', { titlePage: 'Product Page', message: 'Products', products: products })
+  console.log(products)
+  res.render('client/pages/products/index.pug', { titlePage: 'Product Page', message: 'Products', products: products })
+}
+const viewProduct = async(req, res)=>{
+  const id = req.params.id
+  const find = {
+    _id: id,
+    deleted: false
+  }
+  const product = await Product.findOne(find)
+  console.log(product)
+  res.render('client/pages/products/read.pug',{ product: product})
 }
 module.exports = {
-  index
+  index,
+  viewProduct
 }
