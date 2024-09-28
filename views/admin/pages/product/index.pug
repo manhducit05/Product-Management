@@ -80,7 +80,7 @@ block main
                     a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-danger') Dừng hoạt động
                 td  
                   a(href=`/admin/product/info/${item.id}` class='btn btn-info btn-sm mr-1' data-id = item.id button-edit-item) Xem
-                  button(class='btn btn-warning btn-sm' data-id = item.id button-edit-item) Sửa
+                  a(class='btn btn-warning btn-sm' data-id = item.id button-edit-item href=`/admin/product/edit/${item.id}`) Sửa
                   button(class='btn btn-danger btn-sm ml-1' data-toggle="modal" data-target="#staticBackdrop" data-id = item.id  button-delete-item-step1) Xoá
                   .modal.fade#staticBackdrop(data-backdrop="static", data-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true")
                     .modal-dialog.modal-dialog-centered
@@ -94,7 +94,6 @@ block main
                         .modal-footer
                           button.btn.btn-secondary(type="button", data-dismiss="modal") Thoát
                           button.btn.btn-danger(type="button" button-delete-item-step2) Xoá
-
   nav(aria-label="Page navigation example")
   ul.pagination
     -for(var i = 1; i <= count; i++)

@@ -1,0 +1,47 @@
+extends ../../layout/index.pug
+block main
+  - if (messages.update)
+    .message.update
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.update}
+  .card.border-primary.ml-5(style="width: 30rem")
+    img.card-img-top(src=`${product.thumbnail}` alt="...")
+    .card-body
+      table.table.table-bordered
+        form( id='editForm' method="POST") 
+          tr 
+            td Đường dẫn ảnh
+            td 
+              input.form-control(type='text' value=product.thumbnail name='thumbnail')
+          tr 
+            td Giới thiệu 
+            td 
+              input.form-control(type='text' value=product.description name='tittle')
+          tr 
+            td Giá
+            td 
+              input.form-control(type='text' value=product.price name='price') 
+              
+          tr 
+            td Giảm giá
+            td 
+              input.form-control(type='text' value=product.discountPercentage name='discountPercentage') 
+          tr 
+            td Số lượng
+            td 
+              input.form-control(type='text' value=product.stock name='stock') 
+          tr 
+            td Trạng thái
+            td 
+              .form-check
+                input.mr-1.form-check-input(type="radio" value='active' name='status' id='active' checked)  
+                label.mr-2.form-check-label(for="active") Hoạt động 
+              .form-check
+                input.mr-1.form-check-input(type="radio" value='inactive' name='status' id='inactive' )
+                label.form-check-label(for="inactive") Dừng hoạt động 
+          tr  
+            td(colspan="2")
+              button.btn.btn-success(id='submitBtn' product-id=product.id type='button') Sửa
+              button.btn.btn-danger.ml-2(type='button' id='cancelBtn') Hủy
+

@@ -13,20 +13,23 @@ activeBtn.forEach((element)=>{
 const searchTxt = document.querySelector("#searchTxt")
 const searchForm = document.querySelector("#searchForm")
 let key
-searchTxt.addEventListener('input',(e)=>{
-   key = e.target.value;
-})
-searchForm.addEventListener('submit',(e)=>{
-  e.preventDefault()
-  if(key){
-    url.searchParams.set("title", key)
-  }
-  else{
-    url.searchParams.delete("title")
-  }
-  console.log(url);
-  window.location.href = url.href;
-})
+if(searchTxt){
+  searchTxt.addEventListener('input',(e)=>{
+    key = e.target.value;
+ })
+ searchForm.addEventListener('submit',(e)=>{
+   e.preventDefault()
+   if(key){
+     url.searchParams.set("title", key)
+   }
+   else{
+     url.searchParams.delete("title")
+   }
+   console.log(url);
+   window.location.href = url.href;
+ })
+}
+
 //paging
 const pageBtn = document.querySelectorAll("#pageBtn")
 
@@ -98,7 +101,7 @@ const selectAll = document.querySelector('#checkAll') // Checkbox 'Chọn tất 
 const selectOne = document.querySelectorAll('input[name="checkOne"]') // Tất cả các checkbox con
 const txtIds = document.querySelector('#txtIds')
 let ids = [];
-
+if(selectAll){
 // Hàm cập nhật mảng ids
 const updateIdsArray = (checkbox) => {
   const id = checkbox.getAttribute('data-id'); // Lấy thuộc tính 'data-id' của checkbox
@@ -125,9 +128,24 @@ selectAll.addEventListener('change', () => {
 });
 
 // Sự kiện 'change' cho từng checkbox con
+
 selectOne.forEach(checkbox => {
   checkbox.addEventListener('change', function () {
     updateIdsArray(this); // Cập nhật mảng ids khi từng checkbox con thay đổi
   });
 });
+}
 
+
+//edit btn
+const sendBtn = document.querySelector("#submitBtn")
+const editForm = document.querySelector("#editForm")
+const cancelBtn = document.querySelector("#cancelBtn")
+
+const inputs = document.querySelectorAll('#editForm input')
+
+sendBtn.addEventListener('click',()=>{
+  const id = sendBtn.getAttribute('product-id')
+  editForm.action = `/admin/product/edit/${id}?_method=PATCH`
+  editForm.submit()
+})

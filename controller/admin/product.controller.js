@@ -53,6 +53,7 @@ if(req.params.status){
   res.redirect('back')
 }
 }
+//delete product
 const deleteItem = async(req, res)=>{
   req.flash('delete', 'Xoá sản phẩm thành công!')
   const id = req.params.id
@@ -103,6 +104,7 @@ const postAfterCreate = async(req,res)=>{
   res.redirect('/admin/product')  
  
 }
+//view product
 const viewProduct = async(req, res)=>{
   const id = req.params.id
   const find = {
@@ -113,6 +115,34 @@ const viewProduct = async(req, res)=>{
   console.log(product)
   res.render('admin/pages/product/read.pug',{ product: product})
 }
+
+//edit product
+const editProduct = async(req, res)=>{
+  const id = req.params.id
+  const find = {
+    _id: id,
+    deleted: false
+  }
+  const product = await Product.findOne(find)
+  res.render('admin/pages/product/edit.pug',{ product: product})
+}
+const sendAfterEditProduct = async(req, res)=>{
+  req.flash('update', 'Cập nhật sản phẩm thành công!');
+  const id = req.params.id
+  console.log(id)
+  const newData = req.body
+  console.log(newData)
+  await Product.updateOne({ _id: id }, { 
+      thumbnail: newData.thumbnail,
+      tittle : newData.tittle,
+      price : newData.price,
+      discountPercentage: newData.discountPercentage,
+      stock : newData.stock,
+      status:  newData.status
+      
+    });
+  res.redirect('back')
+}
 module.exports = {
   index,
   changeStatus,
@@ -120,5 +150,7 @@ module.exports = {
   changeMulti,
   createProduct,
   postAfterCreate,
-  viewProduct
+  viewProduct,
+  editProduct,
+  sendAfterEditProduct
 }

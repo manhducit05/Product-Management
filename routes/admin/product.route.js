@@ -10,10 +10,13 @@ router.patch('/changeStatus/:status/:id',productController.changeStatus)
 router.patch('/delete/:id',productController.deleteItem)//soft delete
 router.patch('/multi-change', productController.changeMulti)
 router.get('/create', productController.createProduct)
-router.get('/info/:id', productController.viewProduct)
 router.post(
   '/create',
   upload.single('thumbnail'),
   productController.postAfterCreate
 )
+router.get('/info/:id', productController.viewProduct)
+router.get('/edit/:id', productController.editProduct)
+router.patch('/edit/:id', productController.sendAfterEditProduct)
+
 module.exports = router
