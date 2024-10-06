@@ -1,5 +1,7 @@
 const activeBtn = document.querySelectorAll('.btnActive')
 let url = new URL(window.location.href)
+
+
 //filter by status
 activeBtn.forEach((element)=>{
   element.addEventListener('click',()=>{

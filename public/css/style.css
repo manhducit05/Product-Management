@@ -36,3 +36,10 @@
 .inner-priceOld{
   text-decoration: line-through;
 }
+.text-area{
+  width: 100%;              /* Chiều rộng 100% so với phần tử cha */
+  height: 200px;            /* Chiều cao lớn hơn để chứa nhiều văn bản */
+  resize: both;             /* Cho phép thay đổi kích thước ô nhập liệu */
+  overflow-y: auto;         /* Hiển thị con lăn dọc khi nội dung vượt quá chiều cao */
+  font-size: 16px;          /* Kích thước chữ */
+}

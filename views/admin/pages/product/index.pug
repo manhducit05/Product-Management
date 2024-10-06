@@ -55,7 +55,9 @@ block main
               th STT
               th Hình ảnh
               th Tiêu đề
-              th Giá
+              th Giá gốc
+              th Giảm giá
+              th Giá sản phẩm
               th Trạng thái
               th Hành động
             tbody 
@@ -72,7 +74,10 @@ block main
                   heigh='auto'
                   )
                 td  #{item.tittle} 
-                td #{item.price}
+                td  #{item.price.toLocaleString('vi-VN')}đ
+                td  #{item.discountPercentage}
+                td  #{(Number((item.price - item.price * item.discountPercentage * 0.01).toFixed(0))).toLocaleString('vi-VN')}đ
+
                 td 
                   if(item.status=='active')
                     a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-success') Hoạt động

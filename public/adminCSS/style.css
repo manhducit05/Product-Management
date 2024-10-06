@@ -42,3 +42,6 @@
 .hidden{
   display: none;
 }
+.desc-txt{
+  overflow-y: scroll  
+}

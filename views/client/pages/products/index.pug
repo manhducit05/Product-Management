@@ -12,8 +12,8 @@ block main
             img.item-img(src=item.thumbnail, alt='img')
           .inner-content
             .inner-title #{item.tittle}
-            .inner-priceOld #{item.price}$
-            .inner-priceNew #{(item.price-item.price*item.discountPercentage*0.01).toFixed(0)}$
+            .inner-priceOld #{item.price.toLocaleString('vi-VN')}đ  
+            .inner-priceNew #{(Number((item.price - item.price * item.discountPercentage * 0.01).toFixed(0))).toLocaleString('vi-VN')}đ
             .inner-discount.badge.badge-danger -#{item.discountPercentage}%
             <br>
             a(href=`/product/${item.id}`).btn.btn-outline-success.mt-1 Xem chi tiết
