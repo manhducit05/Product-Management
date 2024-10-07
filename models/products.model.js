@@ -15,7 +15,11 @@ const productSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   }
-})
+},
+  {
+    timestamps: true
+  }
+)
 
 const Product = mongoose.model("Product", productSchema, "products"); //ten model, ten schema, ten db
 module.exports = Product;

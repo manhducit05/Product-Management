@@ -46,5 +46,5 @@ routeAdmin(app)
 route(app)
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`ManhDucIt05's Website is running at ${PORT}`)
 })

@@ -1,0 +1,21 @@
+extends ../../layout/index.pug
+block main    
+  - if (messages.update)
+    .message.update
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.update}
+  .card 
+    .card-body  
+      .card-title.badge.badge-info THÊM MỚI SẢN PHẨM
+      form(
+        method= 'POST'
+        )
+        div(class="form-group")
+          label(for='name') Tiêu đề
+          input(type='text', id='title', class="form-control", name='title', required)
+        div(class="form-group")
+          label(for='desc') Mô tả
+          input(type='text', id='desc', class="form-control", name = 'description' required)
+        div(class="form-group")
+          button.btn.btn-primary(type='submit') Tạo
