@@ -41,12 +41,32 @@ const postAfterEdit = async(req, res) => {
   })
   res.redirect('back')
 }
-
+//delete role
+const deleteRole = async(req, res) => {
+  req.flash('delete', 'Xoá sản phẩm thành công!')
+  const id = req.params.id
+  await Role.updateOne({_id: id}, { 
+    deleted: 'true',
+    deleteAt: new Date()
+   })
+  res.redirect('back')
+}
+//view one 
+const viewOne = async(req, res)=>{
+  const id = req.params.id
+  const role = await Role.findOne({
+    deleted: false,
+    _id: id
+  })
+  res.render('admin/pages/role/viewOne.pug', { titlePage: 'Trang chỉnh sửa', role: role});
+}
 
 module.exports = {
   index,
   create,
   postAfterCreate,
   edit,
-  postAfterEdit
+  postAfterEdit,
+  deleteRole,
+  viewOne
 }

@@ -5,6 +5,12 @@ block main
       .alert.alert-success(
     show-alert
     data-time = "5000") #{messages.update}
+
+  - if (messages.delete)
+    .message.delete
+      .alert.alert-danger(
+    show-alert
+    data-time = "5000") #{messages.delete}
   h1 #{titlePage}
   a.btn.btn-outline-success.mb-3(href='/admin/role/create') Thêm mới
   .card 
@@ -26,7 +32,4 @@ block main
                 td 
                   a.btn.btn-secondary(href=`/admin/role/view/${item.id}`) Xem
                   a.btn.btn-warning.ml-1.mr-1(href=`/admin/role/edit/${item.id}`) Sửa
-                  a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Xóa
-
-
-            
+                  a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Xóa    
