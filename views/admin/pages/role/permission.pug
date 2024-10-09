@@ -1,0 +1,107 @@
+extends ../../layout/index.pug
+block main
+  - if (messages.update)
+    .message.update
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.update}
+
+  - if (messages.delete)
+    .message.delete
+      .alert.alert-danger(
+    show-alert
+    data-time = "5000") #{messages.delete}
+  h1 #{titlePage}
+  .text-right
+    button.btn.btn-primary.mb-3.mr-3.btn-lg(id='savePermissionBtn') Lưu
+  .card 
+    .card-body   
+      .card-title Quản lý phân quyền
+        if(role) 
+          div(data-record=role)
+        table.table.table-hover.table-sm(id='savePermissionTable')
+          thead
+            tr 
+              th Tính năng
+              each item in role 
+                th.text-center #{item.title} 
+          tbody 
+            tr(data-name='id').d-none
+              td ID
+              each item in role 
+                td 
+                  input(value = item.id)
+            tr 
+              th Danh mục sản phẩm 
+            tr(data-name='view-category')
+              td Xem 
+              each item in role 
+                td.text-center
+                  input(type='checkbox')
+            tr(data-name='create-category')
+              td Thêm mới
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='edit-category') 
+              td Chỉnh sửa 
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='delete-category')
+              td Xóa
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr 
+              th Sản phẩm 
+            tr(data-name='view-product')
+              td Xem 
+              each item in role 
+                td.text-center
+                  input(type='checkbox')
+            tr(data-name='create-product') 
+              td Thêm mới
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='edit-product') 
+              td Chỉnh sửa 
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='delete-product')
+              td Xóa
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr 
+              th Nhóm quyền
+            tr(data-name='view-permission')
+              td Xem 
+              each item in role 
+                td.text-center
+                  input(type='checkbox')
+            tr(data-name='create-permission')
+              td Thêm mới
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='edit-permission') 
+              td Chỉnh sửa 
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='delete-permission')
+              td Xóa
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+            tr(data-name='roles-permission')
+              td Phân quyền
+              each item in role 
+                td.text-center 
+                  input(type='checkbox')
+  form(id='permissionForm' action='/admin/role/permission?_method=PATCH' method='POST')
+    input#data.d-none(name='objectPermission')
+  script(src='/js/role.js')

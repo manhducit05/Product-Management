@@ -19,7 +19,7 @@ const postAfterCreate = async(req, res) => {
   console.log(req.body)
   const record = new Role(req.body)
   await record.save();
-  res.redirect('back')
+  res.redirect('/admin/role')
 }
 
 //edit Role
@@ -39,7 +39,7 @@ const postAfterEdit = async(req, res) => {
     title: req.body.title,
     description: req.body.description
   })
-  res.redirect('back')
+  res.redirect('/admin/role')
 }
 //delete role
 const deleteRole = async(req, res) => {
@@ -60,7 +60,26 @@ const viewOne = async(req, res)=>{
   })
   res.render('admin/pages/role/viewOne.pug', { titlePage: 'Trang chỉnh sửa', role: role});
 }
+//permission 
+const permission = async(req, res)=>{
+  const role = await Role.find({
+    deleted: false
+  })
+  console.log(role)
+  res.render('admin/pages/role/permission.pug', { titlePage: 'Trang phân quyền', role: role});
+}
 
+const editPermission = async(req, res)=>{
+  const dataJSON = JSON.parse(req.body.objectPermission)
+  console.log(dataJSON)
+  dataJSON.forEach(async(item)=>{
+    await Role.updateOne({ _id: item.id }, { 
+      permission: item.permission 
+    })
+  })
+  res.redirect('back')
+
+}
 module.exports = {
   index,
   create,
@@ -68,5 +87,7 @@ module.exports = {
   edit,
   postAfterEdit,
   deleteRole,
-  viewOne
+  viewOne,
+  permission,
+  editPermission
 }

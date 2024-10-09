@@ -8,6 +8,8 @@ router.get('/edit/:id',roleController.edit)
 router.patch('/edit/:id',roleController.postAfterEdit)
 router.get('/delete/:id',roleController.deleteRole)
 router.get('/view/:id',roleController.viewOne)
+router.get('/permission',roleController.permission)
+router.patch('/permission',roleController.editPermission)
 
 
 module.exports = router

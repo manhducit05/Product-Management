@@ -145,9 +145,11 @@ const editForm = document.querySelector("#editForm")
 const cancelBtn = document.querySelector("#cancelBtn")
 
 const inputs = document.querySelectorAll('#editForm input')
+if(sendBtn){
+  sendBtn.addEventListener('click',()=>{
+    const id = sendBtn.getAttribute('product-id')
+    editForm.action = `/admin/product/edit/${id}?_method=PATCH`
+    editForm.submit()
+  })
+}
 
-sendBtn.addEventListener('click',()=>{
-  const id = sendBtn.getAttribute('product-id')
-  editForm.action = `/admin/product/edit/${id}?_method=PATCH`
-  editForm.submit()
-})
