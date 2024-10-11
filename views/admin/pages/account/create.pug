@@ -1,0 +1,44 @@
+extends ../../layout/index.pug
+block main    
+  - if (messages.update)
+    .message.update
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.update}
+  .card 
+    .card-body  
+      .card-title.badge.badge-success Tạo mới tài khoản
+      form(
+        method= 'POST'
+        )
+        div(class="form-group")
+          label(for='fullName') Họ tên: 
+          input(type='text', id='fullName', class="form-control", name='fullName', required)
+        div(class="form-group")
+          label(for='phone') Số điện thoại: 
+          input(type='text', id='phone', class="form-control", name='phone', required)
+        div(class="form-group")
+          label(for='email') Email
+          input(type='text', id='email', class="form-control", name = 'email' required)
+        div(class="form-group")
+          label(for='pass') Mật khẩu: 
+          input(type='password', id='pass', class="form-control", name = 'password' required)
+        div(class="form-group")
+          label(for='avatar') Ảnh đại diện: 
+          input(type='string', id='avatar', class="form-control", name = 'avatar' required)
+        div(class="form-group")
+          select(class="form-control" aria-label="Default select example" name='roleID')
+            each item in role
+              option(value = item.id ) #{item.title}
+        label Trạng thái
+        div(class="form-check")
+          input.form-check-input(type='radio', id='statusActive', name = 'status', value='active' checked)
+          label.form-check-label(for="statusActive") Hoạt động
+        div(class="form-check")
+          input.form-check-input(type='radio', id='statusInactive', name = 'status', value='inactive') 
+          label.form-check-label(for="statusInactive") Dừng hoạt động
+    
+        div(class="form-group")
+          button.btn.btn-primary(type='submit') Tạo
+        
+    script(src='/js/account.js')

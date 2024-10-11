@@ -1,5 +1,6 @@
 const { default: mongoose } = require("mongoose");
 var slug = require('mongoose-slug-updater');
+
 mongoose.plugin(slug);
 const productSchema = new mongoose.Schema({
   tittle: String, //san pham 1

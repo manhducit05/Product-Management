@@ -1,0 +1,43 @@
+extends ../../layout/index.pug
+block main
+  - if (messages.update)
+    .message.update
+      .alert.alert-success(
+    show-alert
+    data-time = "5000") #{messages.update}
+
+  - if (messages.delete)
+    .message.delete
+      .alert.alert-danger(
+    show-alert
+    data-time = "5000") #{messages.delete}
+  h1 #{titlePage}
+  a.btn.btn-outline-success.mb-3(href='/admin/account/create') Thêm mới
+  .card 
+    .card-body   
+      .card-title Danh sách nhóm quyền
+        table.table.table-hover.table-sm 
+          thead
+            tr 
+              th STT
+              th Tên người dùng
+              th Email
+              th Quyền
+              th Trạng thái
+              th Hành động
+          tbody 
+            each item,index in account
+              tr 
+                td #{index+1}
+                td #{item.fullName}
+                td #{item.email}
+                td #{item.roleID}
+                td
+                  if(item.status=='active')
+                    a(href='#', data-status = item.status, data-id = item.id, class='badge badge-success') Hoạt động
+                  else
+                    a(href='#', data-status = item.status, data-id = item.id,  class='badge badge-danger') Dừng hoạt động
+                td 
+                  a.btn.btn-secondary(href=`/admin/account/view/${item.id}`) Xem
+                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/account/edit/${item.id}`) Sửa
+                  a.btn.btn-danger(href=`/admin/account/delete/${item.id}`) Xóa     

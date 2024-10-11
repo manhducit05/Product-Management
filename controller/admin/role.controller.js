@@ -11,7 +11,6 @@ const index =async (req, res) => {
 
 //create Role
 const create = async(req, res) => {
-  
   res.render('admin/pages/role/create.pug', { titlePage: 'Trang nhóm quyền'});
 }
 const postAfterCreate = async(req, res) => {
@@ -19,7 +18,7 @@ const postAfterCreate = async(req, res) => {
   console.log(req.body)
   const record = new Role(req.body)
   await record.save();
-  res.redirect('/admin/role')
+  res.redirect('back')
 }
 
 //edit Role
