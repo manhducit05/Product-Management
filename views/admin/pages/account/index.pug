@@ -39,5 +39,12 @@ block main
                     a(href='#', data-status = item.status, data-id = item.id,  class='badge badge-danger') Dừng hoạt động
                 td 
                   a.btn.btn-secondary(href=`/admin/account/view/${item.id}`) Xem
-                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/account/edit/${item.id}`) Sửa
-                  a.btn.btn-danger(href=`/admin/account/delete/${item.id}`) Xóa     
+                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/account/change-password/${item.id}`) Đổi mật khẩu
+                  button.btn.btn-danger(id='deleteAccountBtn', item-id=item.id ) Xóa     
+        form(
+          id='deleteAccountForm'
+          action = ''
+          raw-path = '/admin/account/delete'
+          method='POST'
+        )
+        script(src='/js/account.js')

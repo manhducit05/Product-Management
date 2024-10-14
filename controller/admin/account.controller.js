@@ -21,8 +21,51 @@ const postAfterCreate =async (req, res) => {
   await record.save()
   res.redirect('back')
 }
+const viewOnes = async(req, res) => {
+  const id = req.params.id
+  const account = await Account.findOne({
+    _id: id,
+    deleted: false
+  })
+  console.log(account)
+    res.render('admin/pages/account/view.pug', { titlePage: 'Trang chi tiết tài khoản', account: account});
+}
+const deleteAccount = async(req, res) => {
+  req.flash('delete', 'Xoá tài khoản thành công!')
+
+  const id = req.params.id
+  await Account.updateOne({
+    _id: id,
+  },{
+    deleted: 'true',
+    deleteAt: new Date()
+  })
+  res.redirect('back')
+}
+const changePassword = async(req, res) => {
+  const id = req.params.id
+  const account = await Account.findOne({
+    _id: id,
+    deleted: false
+  })
+  res.render('admin/pages/account/change-password.pug', { titlePage: 'Trang chi tiết tài khoản', account: account});
+}
+const sendAfterChange = async(req,res)=>{
+  req.flash('update', 'Đổi mật khẩu thành công!');
+  console.log(req.body)
+  await Account.updateOne({
+    _id: req.body.id,
+  },{
+    password : md5(req.body.password)
+  })
+  res.redirect('back')
+}
 module.exports = {
   index,
   create,
-  postAfterCreate
+  postAfterCreate,
+  viewOnes,
+  deleteAccount,
+  changePassword,
+  sendAfterChange
 }

@@ -14,4 +14,4 @@ const paging = (count, req)=>{
 }
 module.exports = {
   paging
-}
+}   

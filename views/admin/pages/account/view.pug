@@ -1,0 +1,24 @@
+extends ../../layout/index.pug
+block main    
+    .card 
+        .card-body  
+            .card-title.badge.badge-warning Xem thông tin tài khoản
+            form(
+                )
+                div(class="form-group")
+                label(for='name') Tên: 
+                input(type='text', id='title', class="form-control", name='title', required, value=account.fullName, readonly )
+                div(class="form-group")
+                label(for='desc') Email: 
+                input(type='text', id='desc', class="form-control", name = 'description', required , value=account.email, readonly )
+                div(class="form-group")
+                label(for='desc') Phone
+                input(type='text', id='desc', class="form-control", name = 'description', required , value=account.phone, readonly )
+                div(class="form-group")
+                label(for='desc') Role: 
+                input(type='text', id='desc', class="form-control", name = 'description', required , value=account.roleID, readonly )
+                div(class="form-group")
+                label(for='desc') Trạng thái: 
+                input(type='text', id='desc', class="form-control", name = 'description', required , value=account.status, readonly )
+                div(class="form-group")
+                a.btn.btn-primary(href='/admin/account') Thoát
