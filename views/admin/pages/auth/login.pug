@@ -1,0 +1,25 @@
+extends ../../layout/login.pug
+block main
+    - if (messages.update)
+        .message.update
+        .alert.alert-success(
+        show-alert
+        data-time = "5000") #{messages.update}
+
+    - if (messages.delete)
+        .message.delete
+        .alert.alert-danger(
+        show-alert
+        data-time = "5000") #{messages.delete}
+    
+    form.form-login(
+        method='POST'
+        action='/admin/auth/login'
+    )
+        div.form-group 
+            label(for='email') Email 
+            input.form-control#email(type='email' name='email')
+        div.form-group 
+            label(for='pass') Password 
+            input.form-control#pass(type='password' name='password')
+        button.btn.btn-primary Đăng nhập

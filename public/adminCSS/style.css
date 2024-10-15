@@ -42,6 +42,7 @@
 .hidden{
   display: none;
 }
-.desc-txt{
-  overflow-y: scroll  
+.form-login{
+  max-width: 400px;
+  margin: 0 auto;
 }
