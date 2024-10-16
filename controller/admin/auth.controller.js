@@ -33,7 +33,12 @@ const loginValidation = async(req, res) => {
   }
 }
 }
+const logout = (req, res) => {
+  res.clearCookie('token')
+  res.render('admin/pages/auth/login.pug');
+}
   module.exports = {
     login,
-    loginValidation
+    loginValidation,
+    logout
   }
