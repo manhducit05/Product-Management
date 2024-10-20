@@ -1,5 +1,6 @@
 extends ../../layout/index.pug
 block main
+  div #{permission}
   - if (messages.update)
     .message.update
       .alert.alert-success(
@@ -22,7 +23,8 @@ block main
         form.input-group-prepend#searchForm
           input.form-control.rounded#searchTxt(place-holder='search' placeholder="Search..." aria-label="Search" aria-describedby="search-addon" value=searchKey)
           button.btn.btn-outline-secondary#searchBtn(type='submit') Search
-        a.btn.btn-success.mt-5.ml-5(href="/admin/product/create") Tạo mới sản phẩm
+          if(permission.indexOf('create-product')!=-1)
+            a.btn.btn-success.mt-5.ml-5(href="/admin/product/create") Tạo mới sản phẩm
   .card 
     .card-body   
       form(
@@ -79,14 +81,17 @@ block main
                 td  #{(Number((item.price - item.price * item.discountPercentage * 0.01).toFixed(0))).toLocaleString('vi-VN')}đ
 
                 td 
-                  if(item.status=='active')
-                    a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-success') Hoạt động
-                  else
-                    a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-danger') Dừng hoạt động
+                  if(permission.indexOf('edit-product')!=-1)
+                    if(item.status=='active')
+                      a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-success') Hoạt động
+                    else
+                      a(href='#', data-status = item.status, data-id = item.id, button-change-status, class='badge badge-danger') Dừng hoạt động
                 td  
                   a(href=`/admin/product/info/${item.id}` class='btn btn-info btn-sm mr-1' data-id = item.id button-edit-item) Xem
-                  a(class='btn btn-warning btn-sm' data-id = item.id button-edit-item href=`/admin/product/edit/${item.id}`) Sửa
-                  button(class='btn btn-danger btn-sm ml-1' data-toggle="modal" data-target="#staticBackdrop" data-id = item.id  button-delete-item-step1) Xoá
+                  if(permission.indexOf('edit-product')!=-1)
+                    a(class='btn btn-warning btn-sm' data-id = item.id button-edit-item href=`/admin/product/edit/${item.id}`) Sửa
+                  if(permission.indexOf('delete-product')!=-1)
+                    button(class='btn btn-danger btn-sm ml-1' data-toggle="modal" data-target="#staticBackdrop" data-id = item.id  button-delete-item-step1) Xoá
                   .modal.fade#staticBackdrop(data-backdrop="static", data-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true")
                     .modal-dialog.modal-dialog-centered
                       .modal-content

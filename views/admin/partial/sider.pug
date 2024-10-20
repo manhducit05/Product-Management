@@ -1,13 +1,17 @@
 .sider 
   .inner-menu   
     ul 
-      li 
-        a(href='/admin/dashboard') Tổng quan 
-      li  
-        a(href='/admin/product') Sản phẩm 
-      li  
-        a(href='/admin/role') Nhóm quyền
-      li  
-        a(href='/admin/role/permission') Phân quyền
-      li  
-        a(href='/admin/account') Tài khoản
+      if(permission.indexOf('view-category')!=-1)
+        li 
+          a(href='/admin/dashboard') Tổng quan 
+      if(permission.indexOf('view-product')!=-1)
+        li  
+          a(href='/admin/product') Sản phẩm 
+      if(permission.indexOf('view-permission')!=-1)
+        li  
+          a(href='/admin/role') Nhóm quyền
+      if(user.roleID=='67054bb288944bb4acc3ac12')
+        li  
+          a(href='/admin/role/permission') Phân quyền
+        li  
+          a(href='/admin/account') Tài khoản

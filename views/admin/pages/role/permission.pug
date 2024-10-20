@@ -1,5 +1,6 @@
 extends ../../layout/index.pug
 block main
+  div #{permission}
   - if (messages.update)
     .message.update
       .alert.alert-success(

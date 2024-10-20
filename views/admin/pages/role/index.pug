@@ -30,6 +30,9 @@ block main
                 td #{item.title}
                 td #{item.description}
                 td 
+
                   a.btn.btn-secondary(href=`/admin/role/view/${item.id}`) Xem
-                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/role/edit/${item.id}`) Sửa
-                  a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Xóa    
+                  if(permission.indexOf('edit-permission')!=-1)
+                    a.btn.btn-warning.ml-1.mr-1(href=`/admin/role/edit/${item.id}`) Sửa
+                  if(permission.indexOf('delete-permission')!=-1)
+                    a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Xóa    
