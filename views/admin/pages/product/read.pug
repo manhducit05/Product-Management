@@ -6,23 +6,23 @@ block main
       h5.card-title.text-primary #{product.tittle}
       table.table.table-bordered
         tr 
-          td Giới thiệu 
+          td Description
           td #{product.description}
         tr 
-          td Giá
-          td #{product.price}
+          td Price
+          td #{(Number((product.price - product.price * product.discountPercentage * 0.01).toFixed(0))).toLocaleString('vi-VN')}đ
         tr 
-          td Giảm giá
-          td #{product.discountPercentage}
+          td Discount
+          td #{product.discountPercentage}%
         tr 
-          td Số lượng
+          td Stock
           td #{product.stock}
         tr 
-          td Trạng thái
+          td Status
           - if(product.status   =="active")
               td 
-                .badge.badge-success Hoạt động
+                .badge.badge-success Active
           -else 
             td 
-              .badge.badge-warning Dừng hoạt động
+              .badge.badge-warning Inactive
 

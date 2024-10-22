@@ -3,16 +3,16 @@ block main
   
   .card 
     .card-body  
-      .card-title.badge.badge-warning CHỈNH SỬA QUYỀN 
+      .card-title.badge.badge-warning EDIT ROLE
       form(
         method= 'POST',
         action='?_method=PATCH'
         )
         div(class="form-group")
-          label(for='name') Tiêu đề
+          label(for='name') Title
           input(type='text', id='title', class="form-control", name='title', required, value=role.title)
         div(class="form-group")
-          label(for='desc') Mô tả
+          label(for='desc') Description
           input(type='text', id='desc', class="form-control", name = 'description', required , value=role.description)
         div(class="form-group")
-          button.btn.btn-primary(type='submit') Sửa
+          button.btn.btn-primary(type='submit') Save

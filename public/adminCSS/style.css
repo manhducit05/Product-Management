@@ -50,7 +50,30 @@ body {
 .hidden{
   display: none;
 }
+/* form-login css */
 .form-login{
   max-width: 400px;
   margin: 0 auto;
+}
+.form-login input{
+  max-width: 300px;
+}
+.form-login img{
+  max-width: 300px;
+}
+.form-login button{
+  margin-left: 100px;
+}
+/* sider */
+.sider a{
+  text-decoration: none;
+  color: white;
+  width: 100%
+}
+.sider a:hover{
+  color: black!important;
+  cursor: pointer;
+  background-color: white;
+  transform: scale(1.1);
+  transition: transform 2s;
 }

@@ -3,15 +3,15 @@
     ul 
       if(permission.indexOf('view-category')!=-1)
         li 
-          a(href='/admin/dashboard') Tổng quan 
+          a(href='/admin/dashboard') Dashboard 
       if(permission.indexOf('view-product')!=-1)
         li  
-          a(href='/admin/product') Sản phẩm 
+          a(href='/admin/product') Products 
       if(permission.indexOf('view-permission')!=-1)
         li  
-          a(href='/admin/role') Nhóm quyền
+          a(href='/admin/role') Roles
       if(user.roleID=='67054bb288944bb4acc3ac12')
         li  
-          a(href='/admin/role/permission') Phân quyền
+          a(href='/admin/role/permission') Permissions
         li  
-          a(href='/admin/account') Tài khoản
+          a(href='/admin/account') Accounts

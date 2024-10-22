@@ -1,6 +1,5 @@
 extends ../../layout/index.pug
 block main
-  div #{permission}
   - if (messages.update)
     .message.update
       .alert.alert-success(
@@ -14,16 +13,16 @@ block main
     data-time = "5000") #{messages.delete}
   h1 #{titlePage}
   .text-right
-    button.btn.btn-primary.mb-3.mr-3.btn-lg(id='savePermissionBtn') Lưu
+    button.btn.btn-primary.mb-3.mr-3.btn-lg(id='savePermissionBtn') Save
   .card 
     .card-body   
-      .card-title Quản lý phân quyền
+      .card-title Permission Manager
         if(role) 
           div(data-record=role)
         table.table.table-hover.table-sm(id='savePermissionTable')
           thead
             tr 
-              th Tính năng
+              th Feature
               each item in role 
                 th.text-center #{item.title} 
           tbody 
@@ -33,73 +32,73 @@ block main
                 td 
                   input(value = item.id)
             tr 
-              th Danh mục sản phẩm 
+              th Category
             tr(data-name='view-category')
-              td Xem 
+              td View
               each item in role 
                 td.text-center
                   input(type='checkbox')
             tr(data-name='create-category')
-              td Thêm mới
+              td Create
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='edit-category') 
-              td Chỉnh sửa 
+              td Edit 
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='delete-category')
-              td Xóa
+              td Delete
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr 
-              th Sản phẩm 
+              th Product 
             tr(data-name='view-product')
               td Xem 
               each item in role 
                 td.text-center
                   input(type='checkbox')
             tr(data-name='create-product') 
-              td Thêm mới
+              td Create
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='edit-product') 
-              td Chỉnh sửa 
+              td Edit 
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='delete-product')
-              td Xóa
+              td Delete
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr 
-              th Nhóm quyền
+              th Role
             tr(data-name='view-permission')
-              td Xem 
+              td View 
               each item in role 
                 td.text-center
                   input(type='checkbox')
             tr(data-name='create-permission')
-              td Thêm mới
+              td Create
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='edit-permission') 
-              td Chỉnh sửa 
+              td Edit 
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='delete-permission')
-              td Xóa
+              td Delete
               each item in role 
                 td.text-center 
                   input(type='checkbox')
             tr(data-name='roles-permission')
-              td Phân quyền
+              td Permission
               each item in role 
                 td.text-center 
                   input(type='checkbox')

@@ -5,17 +5,17 @@ const index = async (req, res) => {
     {
       class: "btn btn-outline-success btnActive",
       status:"",
-      text: "Tất cả"
+      text: "All"
     },
     {
       class: "btn btn-outline-success btnActive",
       status:"active",
-      text: "Hoạt động"
+      text: "Active"
     },
     {
-      class: "btn btn-outline-success btnActive",
+      class: "btn btn-outline-danger btnActive",
       status:"inactive",
-      text: "Dừng hoạt động"
+      text: "Inactive"
     }
   ]
   const find = {
@@ -57,6 +57,7 @@ if(req.params.status){
 const deleteItem = async(req, res)=>{
   req.flash('delete', 'Xoá sản phẩm thành công!')
   const id = req.params.id
+  console.log(id)
   await Product.updateOne({_id: id}, { 
     deleted: 'true',
     deleteAt: new Date()

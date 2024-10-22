@@ -12,17 +12,18 @@ block main
     show-alert
     data-time = "5000") #{messages.delete}
   h1 #{titlePage}
-  a.btn.btn-outline-success.mb-3(href='/admin/role/create') Thêm mới
+  a.btn.btn-outline-success.mb-3(href='/admin/role/create') + Add new role
   .card 
     .card-body   
-      .card-title Danh sách nhóm quyền
+        h3
+          .badge.badge-secondary List of roles
         table.table.table-hover.table-sm 
           thead
             tr 
-              th STT
-              th Tiêu đề
-              th Mô tả
-              th Hành động
+              th Index
+              th Title
+              th Description 
+              th Actions
           tbody 
             each item, index in role 
               tr 
@@ -31,8 +32,8 @@ block main
                 td #{item.description}
                 td 
 
-                  a.btn.btn-secondary(href=`/admin/role/view/${item.id}`) Xem
+                  a.btn.btn-secondary(href=`/admin/role/view/${item.id}`) View
                   if(permission.indexOf('edit-permission')!=-1)
-                    a.btn.btn-warning.ml-1.mr-1(href=`/admin/role/edit/${item.id}`) Sửa
+                    a.btn.btn-warning.ml-1.mr-1(href=`/admin/role/edit/${item.id}`) Edit
                   if(permission.indexOf('delete-permission')!=-1)
-                    a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Xóa    
+                    a.btn.btn-danger(href=`/admin/role/delete/${item.id}`) Delete    

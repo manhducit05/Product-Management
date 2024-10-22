@@ -1,6 +1,14 @@
 extends ../../layout/index.pug
 block main
-  h1 #{titlePage}
-  //- div #{user}
-  h1 Tên: #{user.fullName}
-  h1 Email: #{user.email}
+  //- h1 #{titlePage}
+  //- //- div #{user}
+  //- h1 Tên: #{user.fullName}
+  //- h1 Email: #{user.email}
+  div.card(style="width: 25rem;")
+    img.card-img-top(src=user.avatar style="width: 10rem; object-fit:cover;")
+    div.card-body
+      h5.card-title Name: #{user.fullName}
+      p.card-text Role: #{role.title}
+    ul.list-group.list-group-flush
+      li.list-group-item  Email: #{user.email}
+      li.list-group-item  Phone: #{user.phone}

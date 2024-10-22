@@ -16,6 +16,7 @@ const requireAuth = async (req, res, next) => {
       _id: user.roleID
     })
     res.locals.user = user
+    res.locals.role = role
     res.locals.permission = role.permission
     next()
   }

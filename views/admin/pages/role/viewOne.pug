@@ -3,14 +3,14 @@ block main
   
   .card 
     .card-body  
-      .card-title.badge.badge-warning CHỈNH SỬA QUYỀN 
+      .card-title.badge.badge-warning VIEW ROLE
       form(
         )
         div(class="form-group")
-          label(for='name') Tiêu đề
+          label(for='name') Title
           input(type='text', id='title', class="form-control", name='title', required, value=role.title, readonly )
         div(class="form-group")
-          label(for='desc') Mô tả
+          label(for='desc') Description
           input(type='text', id='desc', class="form-control", name = 'description', required , value=role.description, readonly )
         div(class="form-group")
-          a.btn.btn-primary(href='/admin/role') Thoát
+          a.btn.btn-primary(href='/admin/role') Cancel

@@ -6,12 +6,12 @@ const index =async (req, res) => {
     deleted: false
   })
   console.log(role)
-  res.render('admin/pages/role/index.pug', { titlePage: 'Trang nhóm quyền', role: role});
+  res.render('admin/pages/role/index.pug', { titlePage: 'Roles page', role: role});
 }
 
 //create Role
 const create = async(req, res) => {
-  res.render('admin/pages/role/create.pug', { titlePage: 'Trang nhóm quyền'});
+  res.render('admin/pages/role/create.pug', { titlePage: 'Roles page'});
 }
 const postAfterCreate = async(req, res) => {
   req.body.createdAt = new Date()
@@ -57,7 +57,7 @@ const viewOne = async(req, res)=>{
     deleted: false,
     _id: id
   })
-  res.render('admin/pages/role/viewOne.pug', { titlePage: 'Trang chỉnh sửa', role: role});
+  res.render('admin/pages/role/viewOne.pug', { titlePage: 'Edit role', role: role});
 }
 //permission 
 const permission = async(req, res)=>{
@@ -65,7 +65,7 @@ const permission = async(req, res)=>{
     deleted: false
   })
   console.log(role)
-  res.render('admin/pages/role/permission.pug', { titlePage: 'Trang phân quyền', role: role});
+  res.render('admin/pages/role/permission.pug', { titlePage: 'Role permission', role: role});
 }
 
 const editPermission = async(req, res)=>{

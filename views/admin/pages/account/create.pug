@@ -7,38 +7,38 @@ block main
     data-time = "5000") #{messages.update}
   .card 
     .card-body  
-      .card-title.badge.badge-success Tạo mới tài khoản
+      .card-title.badge.badge-success Create new account
       form(
         method= 'POST'
         )
         div(class="form-group")
-          label(for='fullName') Họ tên: 
+          label(for='fullName') Name: 
           input(type='text', id='fullName', class="form-control", name='fullName', required)
         div(class="form-group")
-          label(for='phone') Số điện thoại: 
+          label(for='phone') Phone: 
           input(type='text', id='phone', class="form-control", name='phone', required)
         div(class="form-group")
-          label(for='email') Email
+          label(for='email') Email: 
           input(type='text', id='email', class="form-control", name = 'email' required)
         div(class="form-group")
-          label(for='pass') Mật khẩu: 
+          label(for='pass') Password: 
           input(type='password', id='pass', class="form-control", name = 'password' required)
         div(class="form-group")
-          label(for='avatar') Ảnh đại diện: 
+          label(for='avatar') Avatar: 
           input(type='string', id='avatar', class="form-control", name = 'avatar' required)
         div(class="form-group")
           select(class="form-control" aria-label="Default select example" name='roleID')
             each item in role
               option(value = item.id ) #{item.title}
-        label Trạng thái
+        label Status
         div(class="form-check")
           input.form-check-input(type='radio', id='statusActive', name = 'status', value='active' checked)
-          label.form-check-label(for="statusActive") Hoạt động
+          label.form-check-label(for="statusActive") Active
         div(class="form-check")
           input.form-check-input(type='radio', id='statusInactive', name = 'status', value='inactive') 
-          label.form-check-label(for="statusInactive") Dừng hoạt động
+          label.form-check-label(for="statusInactive") Inactive
     
         div(class="form-group")
-          button.btn.btn-primary(type='submit') Tạo
+          button.btn.btn-primary(type='submit') Create
         
     script(src='/js/account.js')

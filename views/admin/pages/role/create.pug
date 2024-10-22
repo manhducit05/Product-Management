@@ -7,15 +7,15 @@ block main
     data-time = "5000") #{messages.update}
   .card 
     .card-body  
-      .card-title.badge.badge-info THÊM MỚI SẢN PHẨM
+      .card-title.badge.badge-info Create new role
       form(
         method= 'POST'
         )
         div(class="form-group")
-          label(for='name') Tiêu đề
+          label(for='name') Title
           input(type='text', id='title', class="form-control", name='title', required)
         div(class="form-group")
-          label(for='desc') Mô tả
+          label(for='desc') Description
           input(type='text', id='desc', class="form-control", name = 'description' required)
         div(class="form-group")
-          button.btn.btn-primary(type='submit') Tạo
+          button.btn.btn-primary(type='submit') Create

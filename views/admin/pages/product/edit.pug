@@ -11,41 +11,41 @@ block main
       table.table.table-bordered
         form( id='editForm' method="POST") 
           tr 
-            td Đường dẫn ảnh
+            td Thumbnail
             td 
               input.form-control(type='text' value=product.thumbnail name='thumbnail')
           tr 
-            td Tên sản phẩm 
+            td Title
             td 
               input.form-control(type='text' value=product.tittle name='tittle')
           tr 
-            td Mô tả
+            td Description
             td 
               input.form-control(type='text' value=product.description name='description')
           tr 
-            td Giá
+            td Price
             td 
               input.form-control(type='text' value=product.price name='price') 
               
           tr 
-            td Giảm giá
+            td Discount
             td 
               input.form-control(type='text' value=product.discountPercentage name='discountPercentage') 
           tr 
-            td Số lượng
+            td Stock
             td 
               input.form-control(type='text' value=product.stock name='stock') 
           tr 
-            td Trạng thái
+            td Status
             td 
               .form-check
                 input.mr-1.form-check-input(type="radio" value='active' name='status' id='active' checked)  
-                label.mr-2.form-check-label(for="active") Hoạt động 
+                label.mr-2.form-check-label(for="active") Active 
               .form-check
                 input.mr-1.form-check-input(type="radio" value='inactive' name='status' id='inactive' )
-                label.form-check-label(for="inactive") Dừng hoạt động 
+                label.form-check-label(for="inactive") Inactive
           tr  
             td(colspan="2")
-              button.btn.btn-success(id='submitBtn' product-id=product.id type='button') Sửa
-              button.btn.btn-danger.ml-2(type='button' id='cancelBtn') Hủy
+              button.btn.btn-primary(id='submitBtn' product-id=product.id type='button') Save
+              button.btn.btn-danger.ml-2(type='button' id='cancelBtn') Cancel
 

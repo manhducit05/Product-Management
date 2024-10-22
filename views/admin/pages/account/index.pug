@@ -12,19 +12,19 @@ block main
     show-alert
     data-time = "5000") #{messages.delete}
   h1 #{titlePage}
-  a.btn.btn-outline-success.mb-3(href='/admin/account/create') Thêm mới
+  a.btn.btn-outline-success.mb-3(href='/admin/account/create') +Create new accouut
   .card 
     .card-body   
-      .card-title Danh sách nhóm quyền
+      .card-title List of accounts
         table.table.table-hover.table-sm 
           thead
             tr 
-              th STT
-              th Tên người dùng
+              th Index
+              th Name
               th Email
-              th Quyền
-              th Trạng thái
-              th Hành động
+              th RoleID
+              th Status
+              th Action
           tbody 
             each item,index in account
               tr 
@@ -34,13 +34,13 @@ block main
                 td #{item.roleID}
                 td
                   if(item.status=='active')
-                    a(href='#', data-status = item.status, data-id = item.id, class='badge badge-success') Hoạt động
+                    a(href='#', data-status = item.status, data-id = item.id, class='badge badge-success') Active
                   else
-                    a(href='#', data-status = item.status, data-id = item.id,  class='badge badge-danger') Dừng hoạt động
+                    a(href='#', data-status = item.status, data-id = item.id,  class='badge badge-danger') Inactive
                 td 
-                  a.btn.btn-secondary(href=`/admin/account/view/${item.id}`) Xem
-                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/account/change-password/${item.id}`) Đổi mật khẩu
-                  button.btn.btn-danger(id='deleteAccountBtn', item-id=item.id ) Xóa     
+                  a.btn.btn-secondary(href=`/admin/account/view/${item.id}`) View
+                  a.btn.btn-warning.ml-1.mr-1(href=`/admin/account/change-password/${item.id}`) Change password
+                  button.btn.btn-danger(id='deleteAccountBtn', item-id=item.id ) Delete    
         form(
           id='deleteAccountForm'
           action = ''

@@ -74,7 +74,8 @@ const deleteBtn1 = document.querySelectorAll('[button-delete-item-step1]')
 const deleteForm = document.querySelector('#form-delete-item')
 if(deleteBtn1.length>0){
   deleteBtn1.forEach(button => {
-     button.addEventListener('click',()=>{
+     button.addEventListener('click',(e)=>{
+      e.preventDefault()
       const id = button.getAttribute('data-id')
       console.log(id)
       deleteForm.action = deleteForm.getAttribute('raw-path')+`/${id}?_method=PATCH`
