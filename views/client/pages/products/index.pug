@@ -9,7 +9,7 @@ block main
       .col-4.mb-3
         .product-item.align-center
           .inner-img
-            img.item-img(src=item.thumbnail, alt='img')
+            img.item-img(src=item.thumbnail, alt='img' style="width: 15rem;")
           .inner-content
             .inner-title #{item.tittle}
             .inner-priceOld #{item.price.toLocaleString('vi-VN')}đ  
@@ -17,3 +17,4 @@ block main
             .inner-discount.badge.badge-danger -#{item.discountPercentage}%
             <br>
             a(href=`/product/${item.id}`).btn.btn-outline-success.mt-1 Xem chi tiết
+

@@ -1,0 +1,63 @@
+extends ../../layout/index.pug
+include ../../mixins/box-head.pug
+block main
+  - var total = 0;
+  .cart
+    nav(aria-label="breadcrumb")
+      ol.breadcrumb
+        li.breadcrumb-item
+          a(href="/cart/view/pay") To pay
+        li.breadcrumb-item.active(aria-current="page") 
+          a(href="/cart/view/ship") To ship
+
+    h1 Giỏ Hàng Của Bạn
+    table.table.table-hover.table-sm 
+      thead
+        tr  
+          th Index
+          th Img
+          th Name 
+          th Price 
+          th Quantity
+          th Total
+          tbody 
+            each item , index in products 
+              tr
+                td #{index+1}
+                td 
+                  img(src= `${item.productInfo.thumbnail}`
+                  alt = `Sản phẩm ${index}`
+                  width='100px'
+                  heigh='auto'
+                  )
+                td.inner-title  #{item.productInfo.tittle} 
+                - const price = (Number((item.productInfo.price - item.productInfo.price * item.productInfo.discountPercentage * 0.01).toFixed(0)))
+                - const quantity = item.quantity
+                - total+=price*quantity
+                td  #{price.toLocaleString('vi-VN')}đ
+                td  #{item.quantity}
+                td  #{(price*quantity).toLocaleString('vi-VN')}đ
+            tr
+              td 
+              td
+              td
+              td(colspan='3')
+
+                div(style='color: red;') Total pay:  #{total.toLocaleString('vi-VN')}đ
+                form(
+                  action='/cart/payment'
+                  method='POST'
+                ) 
+                  .mb-3
+                    label.form-label(for="name") Name: 
+                    input#name.form-control(type="text"  name='name' required)
+                  .mb-3
+                    label.form-label(for="phone") Phone 
+                    input#phone.form-control(type="tel"  name='phone' required)
+                  .mb-3
+                    label.form-label(for="address") Address
+                    textarea#address.form-control(rows="3" name='address')
+                  input.mt-3.btn.btn-primary( value='Payment' type='submit' required) 
+
+
+

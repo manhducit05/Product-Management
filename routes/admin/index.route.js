@@ -12,4 +12,9 @@ module.exports = (app)=>{
   app.use(`${PATH_ADMIN}/role`,authMiddleware.requireAuth,roleRoutes )
   app.use(`${PATH_ADMIN}/account`,authMiddleware.requireAuth,accountRoutes )
   app.use(`${PATH_ADMIN}/auth`,authRoutes )
+  // Route xử lý 404 cho các link không tồn tại
+  app.use(`${PATH_ADMIN}/*`, (req, res) => {
+    res.status(404).send('Trang quản trị không tồn tại - 404');
+  });
+
 }
