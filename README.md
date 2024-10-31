@@ -17,4 +17,8 @@ Some images about my project:
 - Account management: 
   ![image](https://github.com/user-attachments/assets/e953e293-9925-49af-9272-1714272ac130)
 
+- Client view:
+  ![image](https://github.com/user-attachments/assets/3897adb5-d0b2-402b-b422-48417f78eeee)
+  ![image](https://github.com/user-attachments/assets/6960d0e8-0e0e-4308-9a5b-a12eb63db675)
+
 
